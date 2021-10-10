@@ -1,0 +1,14 @@
+# ignore letsencrypt generated certificates
+data/certbot/etc/*
+!data/certbot/etc/.placeholder
+data/certbot/var/*
+!data/certbot/var/.placeholder
+
+# ignore letsencrypt logs
+logs/certbot/*
+!logs/certbot/.placeholder
+
+# ignore generated certificates for haproxy
+data/certificates/*
+
+
