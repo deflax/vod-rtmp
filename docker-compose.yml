@@ -44,7 +44,7 @@ services:
     # set the PSK Password for the Auth Daemon here
     environment:
       - password=ex4mple_p4ss
-   restart: always
+    restart: always
     networks:
       - internal
     labels:
