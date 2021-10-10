@@ -34,10 +34,16 @@ services:
     #entrypoint: sh -c 'while true; do sleep 1; done'
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 15d & wait $${!}; done;'"
 
-  auth:
-    build: ./auth
+  auth: # PSK Authentication Service
+    image: python:3
+    user: nobody
+    command: python /code/auth.py
+    volumes:
+      - "./auth:/code"
+    # set the PSK Password for the Auth Daemon here
+    environment:
+      - password=ex4mple_p4ss
     hostname: auth
-    container_name: auth
     restart: always
     networks:
       - internal

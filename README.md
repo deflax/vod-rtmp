@@ -10,3 +10,8 @@
 
 6. Encoder server = `rtmp://example:1935/live` key = `live?key=supersecret`
 7. Open a browser and go to `https://example.com` to view your live stream via hls.js
+
+
+### Powered by
+https://github.com/zom-bi/zomstream
+
