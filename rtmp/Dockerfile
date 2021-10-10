@@ -7,3 +7,5 @@ COPY index.html /www/
 COPY network.m3u8 /www/
 COPY network0.ts /www/
 COPY network1.ts /www/
+
+EXPOSE 8080
