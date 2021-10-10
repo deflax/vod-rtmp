@@ -5,6 +5,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "1935:1935"
     volumes:
       - "./data/certificates:/certificates"
       - "./config/lb:/usr/local/etc/haproxy"
@@ -34,12 +35,18 @@ services:
 
   rtmp:
     build: ./rtmp
-    ports:
-      - "1935:1935"
-      - "80:8080"
-    container_name: rtmp_server
+    container_name: rtmp
+    hostname: rtmp
     volumes:
       - "./data/rtmp/hls:/tmp/hls"
+    depends_on:
+      - "lb"
+      - "certbot"
+    restart: always
+    networks:
+      - internal
+    labels:
+      - meta.role=rtmp
 
   auth:
     build: ./auth
