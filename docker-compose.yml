@@ -11,6 +11,7 @@ services:
       - "./config/lb:/usr/local/etc/haproxy"
     depends_on:
       - "certbot"
+      - "rtmp"
     restart: always
     networks:
       - internal
@@ -33,23 +34,29 @@ services:
     #entrypoint: sh -c 'while true; do sleep 1; done'
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 15d & wait $${!}; done;'"
 
+  auth:
+    build: ./auth
+    hostname: auth
+    container_name: auth
+    restart: always
+    networks:
+      - internal
+    labels:
+      - meta.role=auth
+
   rtmp:
     build: ./rtmp
     hostname: rtmp
+    container_name: rtmp
     volumes:
       - "./data/rtmp/hls:/tmp/hls"
     depends_on:
-      - "lb"
-      - "certbot"
+      - "auth"
     restart: always
     networks:
       - internal
     labels:
       - meta.role=rtmp
-
-  auth:
-    build: ./auth
-    hostname: auth
 
 networks:
   internal: {}
