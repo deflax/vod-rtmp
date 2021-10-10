@@ -35,7 +35,6 @@ services:
 
   rtmp:
     build: ./rtmp
-    container_name: rtmp
     hostname: rtmp
     volumes:
       - "./data/rtmp/hls:/tmp/hls"
@@ -50,7 +49,7 @@ services:
 
   auth:
     build: ./auth
-    container_name: auth_server
+    hostname: auth
 
 networks:
   internal: {}
