@@ -9,4 +9,5 @@ DOMAIN=$1
 
 docker exec $CB certbot certonly --non-interactive --standalone --email $2 --agree-tos --keep --preferred-challenges http --cert-name "$CERTNAME" -d "$DOMAIN"
 
-cat ./data/certbot/etc/live/$CERTNAME/privkey.pem ./data/certbot/etc/live/$CERTNAME/fullchain.pem > /certificates/$CERTNAME.pem"
+cat "./data/certbot/etc/live/$CERTNAME/privkey.pem" "./data/certbot/etc/live/$CERTNAME/fullchain.pem" > "./data/certificates/$CERTNAME.pem"
+
