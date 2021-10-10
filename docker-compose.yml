@@ -57,11 +57,24 @@ services:
       - "./data/rtmp/hls:/tmp/hls"
     depends_on:
       - "auth"
+      - "frontend"
     restart: always
     networks:
       - internal
     labels:
       - meta.role=rtmp
+
+  frontend: # container for python frontend
+    build: frontend/.
+    command: uwsgi uwsgi.ini
+    volumes:
+      - "./config/frontend/config.yml:/code/config.yml:ro"
+      - "./config/frontend/uwsgi.ini:/code/uwsgi.ini:ro"
+    restart: always
+    networks:
+      - internal
+    labels:
+      - meta.role=frontend
 
 networks:
   internal: {}
