@@ -53,7 +53,6 @@ services:
   rtmp:
     build: ./rtmp
     hostname: rtmp
-    container_name: rtmp
     volumes:
       - "./data/rtmp/hls:/tmp/hls"
     depends_on:
