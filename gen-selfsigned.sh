@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p data/certificates
 cd data/certificates
 openssl genrsa -out default.key 2048
 openssl req -new -key default.key -out default.csr
