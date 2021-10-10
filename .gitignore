@@ -10,5 +10,4 @@ logs/certbot/*
 
 # ignore generated certificates for haproxy
 data/certificates/*
-
-
+!data/certificates/.placeholder
