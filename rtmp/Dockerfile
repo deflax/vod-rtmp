@@ -8,6 +8,7 @@ ENV NGINX_HTTP_FLV_MODULE_VERSION 1.2.9
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y ca-certificates openssl libssl-dev && \
+    apt-get install -y ffmpeg && \
     rm -rf /var/lib/apt/lists/*
 
 # Download and decompress Nginx
