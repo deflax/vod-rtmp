@@ -61,9 +61,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY mime.types /etc/nginx/mime.types
 
 # Copy fallback data
-COPY network.m3u8 /www/
-COPY network0.ts /www/
-COPY network1.ts /www/
+COPY network.m3u8 /www/fallback/
+COPY network0.ts /www/fallback/
+COPY network1.ts /www/fallback/
 
 EXPOSE 1935
 EXPOSE 8080
