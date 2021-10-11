@@ -15,7 +15,7 @@ RUN mkdir -p /tmp/hls.js && \
     cd /tmp/hls.js && \
     wget -O hls.js.tar.gz https://github.com/video-dev/hls.js/releases/download/v1.0.11/release.zip && \
     tar zxvf hls.js.tar.gz &&
-add /tmp/hls.js/dist/hls.min.js /code/static/hls.min.js
+ADD /tmp/hls.js/dist/hls.min.js /code/static/hls.min.js
 
 USER nobody
 WORKDIR /code
