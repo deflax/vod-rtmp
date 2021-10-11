@@ -9,7 +9,8 @@
 5. `./issue-certificate.sh example.com info@example.com` - issue LE production certificate
 6. `cp docker-compose.yml.dist docker-compose.yml` and edit the env variables
 7. `cd config/frontend && cp config.yml.dist config.yml` and edit the variables
-8. `docker-compose down && docker-compose up -d` rerun with the updated configs
+8. After each config updates you can use the following command to start everything:
+`docker-compose down ; docker-compose build; docker-compose up -d ; docker-compose logs --follow`
 
 ## Setup client
 1. Encoder server = `rtmp://example:1935/live/` key = `stream?pass=supersecret`
