@@ -15,18 +15,30 @@
     <video id="player" controls>
     </video>
 </div>
-<script src="{{ url_for('static', filename='flv.min.js') }}"></script>
-<script type="application/javascript">
-    if (flvjs.isSupported()) {
-        var videoElement = document.getElementById('player');
-        var flvPlayer = flvjs.createPlayer({
-            type: 'flv',
-            url: '{{ configuration["web_proto"] }}://{{ configuration["base_url"] }}/flv?app={{ appname }}&stream={{ streamname }}'
-        });
-        flvPlayer.attachMediaElement(videoElement);
-        flvPlayer.load();
-        flvPlayer.play();
-    }
+<script src="{{ url_for('static', filename='hls.min.js') }}"></script>
+<script>
+  var video = document.getElementById('video');
+  if (Hls.isSupported()) {
+    var hls = new Hls({
+      debug: true,
+    });
+    hls.loadSource("{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ streamname }}/index.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+      video.muted = true;
+      video.play();
+    });
+  }
+  // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+  // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
+  // This is using the built-in support of the plain video element, without using hls.js.
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = "{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ streamname }}/index.m3u8'";
+    video.addEventListener('canplay', function () {
+      video.play();
+    });
+  }
+//url: '{{ configuration["web_proto"] }}://{{ configuration["base_url"] }}/flv?app={{ appname }}&stream={{ streamname }}'
 </script>
 </body>
 </html>
