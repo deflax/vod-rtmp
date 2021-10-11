@@ -27,21 +27,17 @@
         <th></th>
       </tr>
       <tr>
-        <td>RTMP</td>
+        <td>RTMP url</td>
         <td><em class="url">rtmp://{{ configuration["rtmp_base"] }}/{{ item[0] }}/{{ item[1] }}</em></td>
-        <td class="btn"><a href="rtmp://{{ configuration["rtmp_base"] }}/{{ item[0] }}/{{ item[1] }}" class="btn btn-green">&#9654;<br/>RTMP</a></td>
+        <td class="btn"><a href="rtmp://{{ configuration['rtmp_base'] }}/{{ item[0] }}/{{ item[1] }}" class="btn btn-green">&#9654;<br/>RTMP</a></td>
       </tr>
       <tr>
-        <td>HTTP-FLV</td>
-	<td><em class="url">{{ configuration["web_proto"] }}://{{ configuration["base_url"] }}/flv?app={{ item[0] }}&stream={{ item[1] }}</em></td>
-	<td class="btn"><a href="{{ configuration["web_proto"] }}://{{ configuration["base_url"] }}/flv?app={{ item[0] }}&stream={{ item[1] }}" class="btn btn-green">&#9654;<br/>HTTP-FLV</a></td>
+        <td>HLS m3u8</td>
+	<td><em class="url">{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ item[1] }}/index.m3u8</em></td>
+	<td class="btn"><a href="{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/player/{{ item[1] }}" class="btn btn-green">&#9654;<br/>HLS.js</a></td>
       </tr>
     </tbody>
   </table>
-  <a href="{{ url_for('frontend.show_player', streamname=item[1], appname=item[0]) }}"
-    class="btn-large btn-green">
-      &#9655; Web Player
-    </a>
 </article>
 {% endfor %}
 </main>

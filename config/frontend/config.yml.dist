@@ -18,7 +18,7 @@ stat_url : http://rtmp:18080/stat
 
 # web protocol - used for generating hls and internal links.
 # change this to https if you are using https for example via traefik in front of this setup
-web_proto: http
+web_proto: https
 
 # if you want to add another template you can place it in the "templates" folder
 # leave it at "default" to use the included default template

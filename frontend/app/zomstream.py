@@ -53,22 +53,22 @@ class Zomstream:
             app  = streamName[0]
             name = streamName[1]
 
-            flv_url  = self.getFlvUrl (app,name)
+            hls_url  = self.getHlsUrl (app,name)
             rtmp_url = self.getRtmpUrl(app,name)
 
-            urls.append({'url': flv_url, 'type':'http_flv'})
+            urls.append({'url': hls_url, 'type':'hls'})
             urls.append({'url': rtmp_url,'type':'rtmp'})
 
             stream = Stream(app=app, name=name, urls=urls)
             streams.append(stream.__dict__)
         return streams
 
-    def getFlvUrl(self,app_name,stream_name):
-        return '%s://%s/flv?app=%s&stream=%s' % (
+    def getHlsUrl(self,app_name,stream_name):
+        return '%s://%s/hls/%s/index.m3u8' % (
             self.configuration['web_proto'],
             self.configuration['base_url'],
-            app_name,
             stream_name)
+
     def getRtmpUrl(self,app_name,stream_name):
         return "rtmp://%s/%s/%s" % (
             self.configuration['rtmp_base'],
