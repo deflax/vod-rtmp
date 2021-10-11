@@ -1,1 +1,2 @@
 replace flv.js (and probably the flv module) and use hls.js for the frontend
+currently example /flv?app=live&stream=stream breaks the module thread. possible denial of service
