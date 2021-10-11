@@ -17,4 +17,5 @@ data/rtmp/hls/*
 
 # ignore nondist configs
 docker-compose.yml
+rtmp/nginx.conf
 config/frontend/config.yml
