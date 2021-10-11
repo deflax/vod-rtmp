@@ -9,3 +9,4 @@ ADD https://github.com/bilibili/flv.js/releases/download/v1.5.0/flv.min.js /code
 RUN chmod 644 /code/static/flv.min.js
 USER nobody
 WORKDIR /code
+EXPOSE 5001

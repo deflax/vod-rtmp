@@ -53,8 +53,8 @@ services:
   rtmp:
     build: ./rtmp
     hostname: rtmp
-    ports:
-      - "18080:18080"
+    #ports:
+    #  - "18080:18080"
     volumes:
       - "./data/rtmp/hls:/tmp/hls"
     depends_on:

@@ -61,7 +61,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY mime.types /etc/nginx/mime.types
 
 # Copy fallback data
-COPY index.html /www/
 COPY network.m3u8 /www/
 COPY network0.ts /www/
 COPY network1.ts /www/
