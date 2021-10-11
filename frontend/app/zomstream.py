@@ -35,7 +35,7 @@ class Zomstream:
         applications = server.findall('application')
         for application in applications:
             appname = application.find('name')
-            if appname.text == "live" or appname.text == "rec":
+            if appname.text == "hls" or appname.text == "rec":
                 streams = application.find('live').findall('stream')
                 for stream in streams:
                     name = stream.find('name')
