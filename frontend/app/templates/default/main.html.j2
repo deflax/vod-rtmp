@@ -29,12 +29,13 @@
       <tr>
         <td>RTMP url</td>
         <td><em class="url">rtmp://{{ configuration["rtmp_base"] }}/{{ item[0] }}/{{ item[1] }}</em></td>
-        <td class="btn"><a href="rtmp://{{ configuration['rtmp_base'] }}/{{ item[0] }}/{{ item[1] }}" class="btn btn-green">&#9654;<br/>RTMP</a></td>
+        <td class="btn"><a href="rtmp://{{ configuration['rtmp_base'] }}/{{ item[0] }}/{{ item[1] }}" class="btn btn-red">&#9654;<br/>RTMP</a></td>
       </tr>
       <tr>
         <td>HLS m3u8</td>
 	<td><em class="url">{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ item[1] }}/index.m3u8</em></td>
-	<td class="btn"><a href="{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/player/{{ item[1] }}" class="btn btn-green">&#9654;<br/>HLS.js</a></td>
+<!--	<td class="btn"><a href="{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/player/{{ item[1] }}" class="btn btn-green">&#9654;<br/>HLS.js</a></td> -->
+	<td class="btn"><a href="{{ url_for('frontend.show_player', streamname=item[1], appname=item[0]) }}" class="btn btn-green">&#9654;<br/>HLS.js</a></td>
       </tr>
     </tbody>
   </table>
