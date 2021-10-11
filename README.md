@@ -13,7 +13,7 @@
 
 ## Setup client
 1. Encoder server = `rtmp://example:1935/live/` key = `stream?pass=supersecret`
-2. Open a browser and go to `https://example.com` to view your live stream via hls.js
+2. Open a browser and go to `https://example.com` to view your live stream via flv.js
 
 ### Powered by
 - https://github.com/tiangolo/nginx-rtmp-docker
