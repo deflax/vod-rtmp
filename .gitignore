@@ -14,3 +14,7 @@ data/certificates/*
 # ignore rtmp directories
 data/rtmp/hls/*
 !data/rtmp/hls/.placeholder
+
+# ignore nondist configs
+docker-compose.yml
+config/frontend/config.yml
