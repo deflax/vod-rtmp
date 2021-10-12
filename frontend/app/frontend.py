@@ -21,12 +21,12 @@ def start():
     )
     return page
 
-@frontend.route("/player/<appname>/<streamname>")
-def show_player(appname, streamname):
+@frontend.route("/player/<appname>/<hlsindex>")
+def show_player(appname, hlsindex):
     playerTemplate = '%s/player.html.j2' % zomstream.configuration['template_folder']
     page = flask.render_template(
         playerTemplate, 
-        streamname=streamname,
+        hlsindex=hlsindex,
         appname=appname,
         configuration=zomstream.configuration
         )
