@@ -15,9 +15,13 @@ RUN mkdir -p /tmp/hls.js && \
     cd /tmp/hls.js && \
     wget -O hls.js.zip https://github.com/video-dev/hls.js/releases/download/v1.0.11/release.zip && \
     unzip hls.js.zip && \
+    cp dist/hls.js /code/static/hls.js && \
+    cp dist/hls.js.map /code/static/hls.js.map && \
     cp dist/hls.min.js /code/static/hls.min.js && \
     cp dist/hls.min.js.map /code/static/hls.min.js.map
 
+RUN chmod 644 /code/static/hls.js
+RUN chmod 644 /code/static/hls.js.map
 RUN chmod 644 /code/static/hls.min.js
 RUN chmod 644 /code/static/hls.min.js.map
 

@@ -6,16 +6,18 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.default.css') }}">
 </head>
 <body>
+<script src="{{ url_for('static', filename='hls.min.js') }}"></script>
+
 <header>
 	<a href="{{ url_for('frontend.start') }}"><h1>{{ configuration["pagetitle"] }}</h1></a>
 	<h2>{{ configuration["subtitle"] }}</h2>
 </header>
+
 <div id="videocontainer">
-    <h1>{{ streamname }}</h1>
+    <h1>{{ stream }}</h1>
     <video id="player" controls>
     </video>
 </div>
-<script src="{{ url_for('static', filename='hls.min.js') }}"></script>
 <script>
   var video = document.getElementById('video');
   if (Hls.isSupported()) {
