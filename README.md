@@ -3,13 +3,13 @@
 ## How to run
 
 1. `apt install docker.io docker-compose`
-2. `docker-compose build`
-3. `./gen-selfsigned.sh` - generate self signed haproxy cert for bootstraping
-4. `docker-compose up -d`
+2. `cp docker-compose.yml.dist docker-compose.yml` and edit the env variables
+3. `cd config/frontend && cp config.yml.dist config.yml` and edit the variables
+4. `./gen-selfsigned.sh` - generate self signed haproxy cert for bootstraping
+5. `docker-compose build`
+8. `docker-compose up`
 5. `./issue-certificate.sh example.com info@example.com` - issue LE production certificate
-6. `cp docker-compose.yml.dist docker-compose.yml` and edit the env variables
-7. `cd config/frontend && cp config.yml.dist config.yml` and edit the variables
-8. After each config updates you can use the following command to start everything:
+8. You can use the following command to rebuild and restart everything:
 `docker-compose down ; docker-compose build; docker-compose up -d ; docker-compose logs --follow`
 
 ## Setup client
