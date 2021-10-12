@@ -26,8 +26,8 @@ def show_player(appname, hlsindex):
     playerTemplate = '%s/player.html.j2' % zomstream.configuration['template_folder']
     page = flask.render_template(
         playerTemplate, 
-        hlsindex=hlsindex,
         appname=appname,
+        hlsindex=hlsindex,
         configuration=zomstream.configuration
         )
     return page
