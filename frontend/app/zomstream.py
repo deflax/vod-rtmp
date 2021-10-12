@@ -41,7 +41,7 @@ class Zomstream:
                     name = stream.find('name')
                     rate = stream.find('bw_video')
                     if rate.text != "0":
-                        self.streamnames.append( [appname.text, streamname.text] )
+                        self.streamnames.append( [appname.text, name.text] )
     
         return self.streamnames
         

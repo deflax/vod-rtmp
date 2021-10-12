@@ -11,34 +11,39 @@
 	<h2>{{ configuration["subtitle"] }}</h2>
 </header>
 <main>
-{% if items == [] %}
+{% if applications == [] %}
   <p style="margin-top: 20px; margin-bottom: 150px;">
     <span style="color: #888; font-size: 14pt;">There are currently no streams running</span>
   </p>
 {% endif %}
-{% for tem in items %}
-<article>
-  <h1>Stream {{ item[1] }}</h1>
-  <table>
-    <tbody>
-      <tr>
-        <th>Protocol</th>
-        <th>URL</th>
-        <th></th>
-      </tr>
-      <tr>
-	<td>RTMP substream }}</td>
-        <td><em class="url">rtmp://{{ configuration["rtmp_base"] }}/{{ item[0] }}/{{ item[2] }}</em></td>
-        <td class="btn"><a href="rtmp://{{ configuration['rtmp_base'] }}/{{ item[0] }}/{{ item[2] }}" class="btn btn-red">&#9654;<br/>RTMP</a></td>
-      </tr>
-      <tr>
-        <td>HLS m3u8</td>
-	<td><em class="url">{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ item[1] }}/index.m3u8</em></td>
-	<td class="btn"><a href="{{ url_for('frontend.show_player', appname=item[0], hlsindex=item[1]) }}" class="btn btn-green">&#9654;<br/>HLS.js</a></td>
-      </tr>
-    </tbody>
-  </table>
-</article>
+{% for application in applications %}
+<h1>{{ application[0] }}</h1>
+    {% for stream in application[1] %}
+    <article>
+      <h2> stream {{ stream[0] }}</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th>Protocol</th>
+            <th>URL</th>
+            <th></th>
+          </tr>
+          {% for substream in stream[1] %}
+              <tr>
+		<td>RTMP {{ substream }}</td>
+		<td><em class="url">rtmp://{{ configuration["rtmp_base"] }}/{{ application[0] }}/{{ substream }}</em></td>
+		<td class="btn"><a href="rtmp://{{ configuration['rtmp_base'] }}/{{ application[0] }}/{{ substream }}" class="btn btn-red">&#9654;<br/>RTMP</a></td>
+              </tr>
+          {% endfor %}
+          <tr>
+            <td>HLS m3u8</td>
+            <td><em class="url">{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ stream[0] }}.m3u8</em></td>
+            <td class="btn"><a href="{{ url_for('frontend.show_player', appname=application[0], stream=stream[0]) }}" class="btn btn-green">&#9654;<br/>HLS.js</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+{% endfor %}
 {% endfor %}
 </main>
 <footer>

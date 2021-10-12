@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
-<title>{{ configuration['pagetitle'] }} - {{ appname }}: {{ streamname }}</title>
+<title>{{ configuration['pagetitle'] }} - {{ appname }}: {{ stream }}</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.default.css') }}">
 </head>
 <body>
@@ -22,7 +22,7 @@
     var hls = new Hls({
       debug: true,
     });
-    hls.loadSource("{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ hlsindex }}.m3u8");
+    hls.loadSource("{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ stream }}.m3u8");
     hls.attachMedia(video);
     hls.on(Hls.Events.MEDIA_ATTACHED, function () {
       video.muted = true;
@@ -33,12 +33,11 @@
   // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
   // This is using the built-in support of the plain video element, without using hls.js.
   else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-    video.src = "{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ hlsindex }}.m3u8";
+    video.src = "{{ configuration['web_proto'] }}://{{ configuration['base_url'] }}/hls/{{ stream }}.m3u8";
     video.addEventListener('canplay', function () {
       video.play();
     });
   }
-//url: '{{ configuration["web_proto"] }}://{{ configuration["base_url"] }}/flv?app={{ appname }}&stream={{ streamname }}'
 </script>
 </body>
 </html>
