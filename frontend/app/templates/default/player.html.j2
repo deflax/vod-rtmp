@@ -15,11 +15,11 @@
 
 <div id="videocontainer">
     <h1>{{ stream }}</h1>
-    <video id="video" controls>
+    <video height="1080" id="player" controls>
     </video>
 </div>
 <script>
-  var video = document.getElementById('video');
+  var video = document.getElementById('player');
   if (Hls.isSupported()) {
     var hls = new Hls({
       debug: true,
