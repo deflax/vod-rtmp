@@ -1,7 +1,6 @@
 # vod-rtmp
 
 ## How to run
-
 1. `apt install docker.io docker-compose`
 2. `cp docker-compose.yml.dist docker-compose.yml` and edit the env variables
 3. `cd config/frontend && cp config.yml.dist config.yml` and edit the variables
@@ -14,7 +13,7 @@
 
 ## Setup client
 1. Encoder server = `rtmp://example:1935/live/` key = `stream?pass=supersecret`
-2. Open a browser and go to `https://example.com` to view your live stream via flv.js
+2. Open a browser and go to `https://example.com` to view your live stream via hls.js
 
 ### Powered by
 - https://github.com/tiangolo/nginx-rtmp-docker
